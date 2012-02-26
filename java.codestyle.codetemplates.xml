@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><templates><template autoinsert="false" context="methodbody_context" deleted="false" description="Code in created method stubs" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.methodbody" name="methodbody">throw new RuntimeException("Not yet implemented!");</template></templates>
