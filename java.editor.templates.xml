@@ -48,7 +48,7 @@
 System.arraycopy(${array}, 0, ${result}, 0, ${array}.length);
 ${result}[${array}.length]= ${var};</template><template autoinsert="false" context="java-statements" deleted="false" description="merge two arrays into one" enabled="true" id="org.eclipse.jdt.ui.templates.arraymerge" name="arraymerge">${array_type}[] ${result:newName(array1)} = new ${array_type}[${array1:array}.length + ${array}.length];
 System.arraycopy(${array1}, 0, ${result}, 0, ${array1}.length);
-System.arraycopy(${array}, 0, ${result}, ${array1}.length, ${array}.length);</template><template autoinsert="false" context="swt-statements" deleted="false" description="new Browser" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.swt.browser" name="Browser">${browserType:newType(org.eclipse.swt.browser.Browser)} ${browser:newName(org.eclipse.swt.browser.Browser)}= new ${browserType}(${parent:var(org.eclipse.swt.widgets.Composite)}, ${style:link(SWT.NONE, SWT.MOZILLA)});
+System.arraycopy(${array}, 0, ${result}, ${array1}.length, ${array}.length);</template><template autoinsert="true" context="java" deleted="false" description="JUnit4 assertEquals" enabled="true" name="ase">${:importStatic(org.junit.Assert.assertEquals)}assertEquals(${expected:var(java.lang.Object)}, ${actual:var(java.lang.Object)});${cursor}</template><template autoinsert="true" context="java-statements" deleted="false" description="assertEquals - JUnit 4" enabled="true" name="asequals">${:importStatic(org.junit.Assert.assertEquals)}assertEquals(${expected:var(java.lang.Object)}, ${actual:var(java.lang.Object)});${cursor}</template><template autoinsert="true" context="java-statements" deleted="false" description="assertFalse - JUnit 4" enabled="true" name="asfalse">${:importStatic(org.junit.Assert.assertFalse)}assertFalse(${expected:var(boolean)});${cursor}</template><template autoinsert="true" context="java-statements" deleted="false" description="assertNotNull - JUnit 4" enabled="true" name="asnotnull">${:importStatic(org.junit.Assert.assertNotNull)}assertNotNull(${actual:var(java.lang.Object)});${cursor}</template><template autoinsert="true" context="java-statements" deleted="false" description="assertNull - JUnit 4" enabled="true" name="asnull">${:importStatic(org.junit.Assert.assertNull)}assertNull(${actual:var(java.lang.Object)});${cursor}</template><template autoinsert="true" context="java-statements" deleted="false" description="assertTrue - JUnit 4" enabled="true" name="astrue">${:importStatic(org.junit.Assert.assertTrue)}assertTrue(${actual:var(boolean)});${cursor}</template><template autoinsert="false" context="swt-statements" deleted="false" description="new Browser" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.swt.browser" name="Browser">${browserType:newType(org.eclipse.swt.browser.Browser)} ${browser:newName(org.eclipse.swt.browser.Browser)}= new ${browserType}(${parent:var(org.eclipse.swt.widgets.Composite)}, ${style:link(SWT.NONE, SWT.MOZILLA)});
 ${browser}.setLayoutData(new ${gridDataType:newType(org.eclipse.swt.layout.GridData)}(SWT.${horizontal:link(FILL, BEGINNING, CENTER, END)}, SWT.${vertical:link(FILL, TOP, CENTER, BOTTOM)}, ${hex:link(true, false)}, ${vex:link(true, false)}));
 ${browser}.setUrl(${word_selection}${});
 ${imp:import(org.eclipse.swt.SWT)}${cursor}</template><template autoinsert="false" context="swt-statements" deleted="false" description="new Button" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.swt.button" name="Button">${buttonType:newType(org.eclipse.swt.widgets.Button)} ${button:newName(org.eclipse.swt.widgets.Button)}= new ${buttonType}(${parent:var(org.eclipse.swt.widgets.Composite)}, ${style:link(SWT.PUSH, SWT.TOGGLE, SWT.RADIO, SWT.CHECK, SWT.FLAT)});
@@ -204,6 +204,9 @@ ${content}.setSize(${contentSize});
 ${scrolled}.setMinSize(${contentSize});</template><template autoinsert="true" context="java-members" deleted="false" description="Orione - setup for junit 4" enabled="true" name="SetUp">@${testType:newType(org.junit.Before)}
 public void ${setUp}() throws Exception {
 	${cursor} 
+}</template><template autoinsert="true" context="java-members" deleted="false" description="Setup method for JUnit4" enabled="true" name="setup4">${:import(org.junit.Before)}@Before&#13;
+public void setup(){&#13;
+	${cursor}&#13;
 }</template><template autoinsert="false" context="swt-statements" deleted="false" description="new Shell" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.swt.shell" name="Shell">${shellType:newType(org.eclipse.swt.widgets.Shell)} ${shell:newName(org.eclipse.swt.widgets.Shell)} = new ${shellType}(${parent:var(org.eclipse.swt.widgets.Shell)}, ${style:link('SWT.DIALOG_TRIM | SWT.PRIMARY_MODAL', 'SWT.DIALOG_TRIM | SWT.MODELESS', 'SWT.SHELL_TRIM | SWT.MODELESS', 'SWT.SHELL_TRIM | SWT.PRIMARY_MODAL')});
 ${shell}.setLayout(new ${layoutType:newType(org.eclipse.swt.layout.GridLayout)}(${numberColumns:link(1, 2, 3, 4, 5)}, ${equalColumns:link(false, true)}));
 
@@ -255,11 +258,14 @@ ${item}.setText(${count:link(0, 1, 2, 3, 4, 5)}, ${word_selection}${});
 ${imp:import(org.eclipse.swt.SWT)}${cursor}</template><template autoinsert="true" context="java-members" deleted="false" description="Orione - JUnit 4 Tear down method" enabled="true" name="TearDown">@${testType:newType(org.junit.After)}
 public void ${tearDown}() throws Exception {
 	${cursor} 
-}</template><template autoinsert="false" context="java-members" deleted="false" description="test method (JUnit 4)" enabled="true" id="org.eclipse.jdt.ui.templates.test_junit4" name="test">@${testType:newType(org.junit.Test)}
-public void ${testName}() throws Exception {
-	${staticImport:importStatic('org.junit.Assert.*')}${cursor}
+}</template><template autoinsert="true" context="java-members" deleted="false" description="Teardown method for JUnit 4" enabled="true" name="teardown4">${:import(org.junit.After)}@After&#13;
+public void tearDown(){&#13;
+	${cursor}&#13;
 }</template><template autoinsert="false" context="java-members" deleted="false" description="test method (JUnit 3)" enabled="true" id="org.eclipse.jdt.ui.templates.test" name="test3">public void test${name}() throws Exception {
 	${cursor}
+}</template><template autoinsert="false" context="java-members" deleted="false" description="test method (JUnit 4)" enabled="true" id="org.eclipse.jdt.ui.templates.test_junit4" name="test4">${:import(org.junit.Test)}@Test
+public void ${testName}() throws Exception {
+	${cursor} 
 }</template><template autoinsert="false" context="swt-statements" deleted="false" description="new Text" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.swt.text" name="Text">${type:newType(org.eclipse.swt.widgets.Text)} ${text:newName(org.eclipse.swt.widgets.Text)}= new ${type}(${parent:var(org.eclipse.swt.widgets.Composite)}, ${style:link('SWT.SINGLE | SWT.LEAD | SWT.BORDER', 'SWT.SINGLE | SWT.LEAD | SWT.READ_ONLY | SWT.BORDER', 'SWT.SINGLE | SWT.LEAD | SWT.PASSWORD | SWT.BORDER', 'SWT.MULTI | SWT.WRAP | SWT.V_SCROLL | SWT.BORDER', 'SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER')});
 ${text}.setLayoutData(new ${gridDataType:newType(org.eclipse.swt.layout.GridData)}(SWT.${horizontal:link(FILL, BEGINNING, CENTER, END)}, SWT.${vertical:link(CENTER, TOP, BOTTOM, FILL)}, ${hex:link(true, false)}, ${vex:link(false, true)}));
 ${text}.setText(${word_selection}${});
